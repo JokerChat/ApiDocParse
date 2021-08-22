@@ -1,0 +1,5 @@
+svglib
+jsonpath==0.82
+requests
+jsonsearch
+baidu-aip
