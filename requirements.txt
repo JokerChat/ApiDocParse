@@ -3,3 +3,4 @@ jsonpath==0.82
 requests
 jsonsearch
 baidu-aip
+openpyxl==3.0.7
