@@ -5,7 +5,7 @@
 
 class DoMain(object):
     """域名配置"""
-    RAP = 'https://rap2api.bluemoon.com.cn'
+    RAP = 'RAP'
 
 class UrlConfig(DoMain):
     """Url配置"""
@@ -16,14 +16,14 @@ class UrlConfig(DoMain):
 
 class Account(object):
     RAP = {
-    "email": "fangjunjie@bluemoon.com.cn",
-    "password": "fangjunjie1996"
+    "email": "email",
+    "password": "password"
   }
     OCR = [
         {
-            "app_id": "24586169",
-            "api_key": "1W3ZkAMpCb9qDty3acKg13XK",
-            "secret_key": "wBjeMXGV7o4QtfEhZfkB71OX3BA6TgyU"
+            "app_id": "app_id",
+            "api_key": "api_key",
+            "secret_key": "secret_key"
         }
     ]
 
