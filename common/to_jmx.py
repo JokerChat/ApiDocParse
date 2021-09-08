@@ -1,8 +1,4 @@
 # -*- coding: utf-8 -*-
-# @Author       :junjie
-# @Time         :2021/7/31 16:50
-# @FileName     :to_jmx.py
-#IDE            :PyCharm
 
 import json
 from lxml import etree

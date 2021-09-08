@@ -1,8 +1,4 @@
 # -*- coding: utf-8 -*-
-# @Author       :junjie
-# @Time         :2021/7/31 16:44
-# @FileName     :rap2_to_yaml.py
-#IDE            :PyCharm
 
 import yaml
 import zipfile

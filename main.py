@@ -1,0 +1,14 @@
+# -*- coding: UTF-8 -*-
+
+import uvicorn
+from app import app
+
+
+
+
+
+
+if __name__ == "__main__":
+    #reload 修改后自动重载
+    #debug  开启debug模式
+    uvicorn.run(app='main:app', host="0.0.0.0",port=8080,reload=True,debug=False)

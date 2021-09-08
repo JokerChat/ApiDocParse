@@ -1,11 +1,4 @@
 # -*- coding: UTF-8 -*-
-'''
-@Project ：bmTest_fastapi 
-@File    ：rap2_to_jmx.py
-@IDE     ：PyCharm 
-@Author  ：junjie
-@Date    ：2021/8/6 10:43 下午 
-'''
 
 
 import uuid

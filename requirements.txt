@@ -5,3 +5,7 @@ jsonsearch
 baidu-aip
 openpyxl==3.0.7
 PyYAML==5.4.1
+fastapi
+uvicorn
+pydantic==1.7.3
+starlette==0.13.6
