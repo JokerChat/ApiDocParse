@@ -5,14 +5,11 @@ import zipfile
 import uuid
 import time
 from utils.FILE_PATH import DOWNLOAD_PATH
-from common.rap2.rap2_parse import Rap2Parse
 
-class RapToYaml(object):
+class ToYaml(object):
 
     @classmethod
-    def to_yaml(cls, id, cookies=None, module=None):
-        #获取接口文档的数据
-        data_list, name = Rap2Parse.api_data(id, cookies, module)
+    def to_yaml(cls, name, data_list):
         #设置文件名
         file_name = f"{name}-{uuid.uuid4().hex}.zip"
         #创建一个zip文件对象，压缩时mode为w
@@ -35,5 +32,5 @@ class RapToYaml(object):
 
 
 if __name__ == '__main__':
-    result = RapToYaml.to_yaml(407)
+    result = ToYaml.to_yaml(407,{})
     print(result)

@@ -2,9 +2,10 @@
 
 import uvicorn
 from app import app
+from starlette.staticfiles import StaticFiles
 
-
-
+#挂载静态文件夹
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 
 

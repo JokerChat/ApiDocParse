@@ -54,7 +54,7 @@ class Rap2Data(object):
         :return: 返回json数据
         """
         params = {"id": id}
-        if cookies:
+        if cookies is not None:
             try:
                 cls.cookies = dict([i.split("=", 1) for i in cookies.split("; ")])
             except Exception as e:

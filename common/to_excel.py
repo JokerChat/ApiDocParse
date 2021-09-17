@@ -7,14 +7,17 @@ from openpyxl import load_workbook, Workbook
 from openpyxl.utils import get_column_letter
 from openpyxl.styles import Font, Alignment, PatternFill, Border, Side
 from utils.FILE_PATH import DOWNLOAD_PATH
-from common.rap2.rap2_parse import Rap2Parse
 
 class CreateCases(object):
     """
     从rap2中导入数据
     """
 
-    def __init__(self):
+    def __init__(self, name):
+        #文件名拼接uuid
+        self.file_name = f"{name}-{uuid.uuid4().hex}.xlsx"
+        #文件路径
+        self.file_path = os.path.join(DOWNLOAD_PATH, self.file_name)
         self.title = ['id','title','description','url','method','headerData','queryData','data','assertAction','actual','result','rearAction']
         # self.title = ['用例ID','用例标题','用例描述','接口路径','请求方式','请求头','查询参数','请求参数','断言操作','实际请求结果','测试结果','后置操作']
         #高度
@@ -33,13 +36,11 @@ class CreateCases(object):
                         top=Side(border_style='thin', color='000000'),
                         bottom=Side(border_style='thin', color='000000'))
 
-    def create_file(self, id, cookies=None, module=None):
-        #获取接口文档数据和文件名
-        data, name = Rap2Parse.api_data(id, cookies, module)
-        #文件名拼接uuid
-        file_name = f"{name}-{uuid.uuid4().hex}.xlsx"
-        #生成文件路径
-        self.file_path = os.path.join(DOWNLOAD_PATH, file_name)
+    def create_file(self, data):
+        """
+        :param data: 接口数据
+        :return:
+        """
         wb = Workbook()
         for index, dto in enumerate(data):
             #根据模块名生成各个sheet页
@@ -73,7 +74,7 @@ class CreateCases(object):
         #保存文件
         wb.save(self.file_path)
         wb.close()
-        return file_name
+        return self.file_name
 
     def write_data(self, sheet_name, row, column, value):
         """
@@ -95,5 +96,5 @@ class CreateCases(object):
 
 
 if __name__ == '__main__':
-    create_excel = CreateCases()
+    create_excel = CreateCases('test')
     create_excel.create_file(407)

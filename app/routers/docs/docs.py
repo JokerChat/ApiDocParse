@@ -2,9 +2,10 @@
 
 from fastapi import APIRouter
 from app.routers.docs.docs_schemas import Rap2Body
-from common.rap2.rap2_to_excel import CreateCases
-from common.rap2.rap2_to_yaml import RapToYaml
-from common.rap2.rap2_to_jmx import Rap2ToJmx
+from common.to_excel import CreateCases
+from common.to_yaml import ToYaml
+from common.to_jmx import ToJmx
+from common.rap2_parse import Rap2Parse
 from utils.FILE_PATH import DOWNLOAD_PATH
 from utils.config import UrlConfig
 from starlette.responses import FileResponse
@@ -19,13 +20,14 @@ async def export(body: Rap2Body):
     module_name = body.moduleName
     cookies = body.cookies
     try:
+        data, name= Rap2Parse.api_data(project_id, cookies, module_name)
         if type == 1:
-            create_excel = CreateCases()
-            file_name = create_excel.create_file(project_id, cookies, module_name)
+            create_excel = CreateCases(name)
+            file_name = create_excel.create_file(data)
         elif type == 2:
-            file_name = RapToYaml.to_yaml(project_id, cookies, module_name)
+            file_name = ToYaml.to_yaml(name, data)
         else:
-            file_name = Rap2ToJmx.to_jmx(project_id, cookies, module_name)
+            file_name = ToJmx.to_jmx(name, data)
         url = UrlConfig.DOWNLOAD_URL + file_name
         return dict(code=0, msg='请求成功',data=url)
     except Exception as e:

@@ -17,7 +17,7 @@ class Rap2Body(BaseModel):
         return value
 
 
-    @validator('projectId','type','moduleName')
+    @validator('projectId','type')
     def checkEmpty(cls, value):
         if value == '':
             raise ValueError('必须有值')
